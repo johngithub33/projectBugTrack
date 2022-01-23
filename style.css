@@ -1,0 +1,102 @@
+*{
+    /* reset default browser settings */
+    margin: 0;
+    padding: 0;
+
+    /* tells the browser to account for any border and padding in the values you
+    specify for an element's width and height. If you set an element's width to 
+    100 pixels, that 100 pixels will include any border or padding you added, and 
+    the content box will shrink to absorb that extra width. */
+    box-sizing: border-box;
+
+    /* global font unless overwridden */
+    font-family: 'Khula', sans-serif;
+}
+
+
+/* FORM **********************************************************/
+
+.loginForm{
+    border: 1px solid gray;
+
+    width: 300px;
+    margin: 225px auto 0 auto;
+
+
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.inputComboHolder{
+
+    align-self: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    width: 240px;
+
+    margin: 10px 0 0 0;
+    
+
+}
+
+input{
+    width: 150px;
+}
+
+/* buttons */
+.buttonHolder{
+    align-self: center;
+
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between; */
+}
+
+.loginForm input[type="submit"]{
+
+    width: 120px;
+
+    margin: 10px 0 0 0;
+
+}
+
+.loginForm input[value="create user"]{
+
+        align-self: center;
+        margin: 10px 0;
+
+}
+
+/********************************************************/
+/* test form */
+.testForm{
+    width: 350px;
+    height: 100px;
+    margin: 25px auto 0 auto;
+
+    border: 2px solid gray;
+
+    position: relative;
+}
+
+.testForm label{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+
+.testForm input{
+    position: absolute;
+    
+    top: 10px;
+    right: 10px;
+    
+}
+
+
