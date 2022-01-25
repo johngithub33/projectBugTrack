@@ -18,7 +18,7 @@
     
 
     <div class="outerLoginContainer">
-        <h1> BUGZ TRACKER</h1>
+        <h1> BUG TRACKER</h1>
         
         <form action="POST" class="loginForm">
             
@@ -43,32 +43,22 @@
     </div>
 
     <div class="createUser">
-        <p>username:</p>
-        <p>password: </p>
+        <div class="inputComboHolder">
+            <label> username: </label>
+            <input type="text" name="usernames">
+        </div>
+
+        <div class="inputComboHolder">
+            <label> password: </label>
+            <input type="text" name="password">
+        </div>
     </div>
-
-
 
     <div style="text-align: center;">
         <a href="/dashboard.html"> dashboard </a>
         <br>
         <a href="/admin.html">admin </a>
     </div>
-
-    <form action="POST" class="testForm">
-
-        <!-- The 'for' attribute of <label> must be equal to the id attribute of the 
-            related element to bind them together. A label can also be bound to an 
-            element by placing the element inside the <label> element.  -->
-        <label for="username"> username: </label>
-
-        <!-- id is used to identify the HTML element through the Document Object Model (via JavaScript 
-            or styled with CSS). id is expected to be unique within the page.
-
-            "name" corresponds to the form element and identifies what is posted 
-            back to the server. -->
-        <input type="text" id="username" name="username">
-    </form>
 
     <script src="script.js"></script>
     
