@@ -42,28 +42,31 @@
         
         //button drive search, not live text as it's being typed
         let submitBtn = document.querySelector('#searchSubmit')
+
         submitBtn.addEventListener('click', () => {
             
-            console.log('clicked')
-
             var url = "http://localhost:4000/livesearch/"+inputText.value;
 
             var con = new XMLHttpRequest();
-            
+
             con.onreadystatechange = function() {
-            if (con.readyState == XMLHttpRequest.DONE) {
-                alert(con.responseText);
+                if (con.readyState == XMLHttpRequest.DONE) {
+                    console.log(con.responseText);
+                   
+                    var responseFromBackend = con.responseText;
+                    var item = document.createElement("h1");
+                    var textNode = document.createTextNode(responseFromBackend)
+                    item.appendChild(textNode);
+                    document.querySelector('.newAttachPoint').appendChild(item);
+                    textNode = document.createTextNode(responseFromBackend);
+                    alert(con.responseText);
+                }
             }
-}
 
             con.open('GET', url, true);
             con.send();
 
-            const item = document.createElement("h1");
-            // const textNode = document.createTextNode(result[0].username+result[0].password)
-            const textNode = document.createTextNode("value here")
-            item.appendChild(textNode);
-            document.querySelector('.newAttachPoint').appendChild(item);
+            
 
         })
 

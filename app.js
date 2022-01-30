@@ -78,12 +78,16 @@ app.get('/livesearch/:id', (req,res) => {
             if(result != '') {
                 console.log("MATCH! password is: " + result[0].password);
 
+
+                //the below three res statements can also be replaced with a simple res.send()
                 res.writeHead(200,{
                     "Content-Type": "text/plain",
                     "Access-Control-Allow-Origin": "*" // Allow access from other domains
                 });
-                res.write('Hello From Server   O w O !');
+                res.write(result[0].password);
                 res.end();     
+
+                
                       
             }
             else console.log('no match')
