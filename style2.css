@@ -133,11 +133,12 @@ input:focus{
 .loginForm input[type="submit"]:hover{
 
     background-color: rgb(82, 82, 82);
+}
 
 
+.loginForm input[value="Login as Demo User"]{
 
-.loginForm input[value="create user"]{
-
+        background: orange;
         align-self: center;
         margin: 10px 0;
 
