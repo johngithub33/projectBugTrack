@@ -31,20 +31,38 @@
 
     <h2>search for user:</h2>
     <input type="text" id="userSearchInput">
+    <button id="searchSubmit">Search</button>
+
     <h1>user search info:</h1>
 
     <script>
 
-        //get live input text as it's constantly changing
         let inputText = document.querySelector('#userSearchInput');
-        inputText.addEventListener('input', () => {
-            console.log(inputText.value)
+
+        
+        //button drive search, not live text as it's being typed
+        let submitBtn = document.querySelector('#searchSubmit')
+        submitBtn.addEventListener('click', () => {
+            console.log('clicked')
 
             var url = "http://localhost:4000/livesearch/"+inputText.value;
 
             var con = new XMLHttpRequest();
             con.open('GET', url, true);
             con.send();
+
+        })
+
+        //get live input text as it's constantly changing
+        inputText.addEventListener('input', () => {
+            console.log(inputText.value)
+
+            // //hit API with value of inputText.value, node.js then uses :id for that value
+            // var url = "http://localhost:4000/livesearch/"+inputText.value;
+
+            // var con = new XMLHttpRequest();
+            // con.open('GET', url, true);
+            // con.send();
 
         })
 

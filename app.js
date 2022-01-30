@@ -27,20 +27,17 @@ app.post('/signup', function(req, res){
     let username = req.body.username;
     let password = req.body.password;
 
-    // con.query("SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = 'james')", function (err,result){
-
-    
-    // con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${username}')`, 
     con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${username}')`, 
     function (err,result){
 
             //error in connection query
-            // if(err){
-            //     console.log('error')
-            //     con.release();
-            //     return;
-            // }
+            if(err){
+                console.log('error')
+                con.release();
+                return;
+            }
 
+            //if query returns nothing
             if(result == '') res.send(`error page tbd, username not there, result is: ${result}`)
 
             //query returns '' for result if user not there
@@ -76,10 +73,10 @@ app.post('/signup', function(req, res){
 app.get('/livesearch/:id', (req,res) => {
     console.log("live search working! here's req: " + req.params.id);
 
-    if(req.params.id == 'james')
-        con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${req.params.id}')`, function (err,result){
+    con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${req.params.id}')`, function (err,result){
 
-            console.log("MATCH!" + result[0].password);
+            if(result != '') console.log("MATCH!" + result[0].password);
+            else console.log('no match')
         })
 
 })
