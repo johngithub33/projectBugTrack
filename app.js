@@ -75,17 +75,16 @@ app.get('/livesearch/:id', (req,res) => {
                     console.log("MATCH! password is: " + result[0].password);
 
                     //send text only back to front end
-                        //the below three res statements can also be replaced with a simple res.send()
-                        // res.writeHead(200,{
-                        //     "Content-Type": "text/plain",
-                        //     "Access-Control-Allow-Origin": "*" // Allow access from other domains
-                        // });
-                        // // res.write(result[0].password);
-                        // res.write(result[0]);
-                        // res.end();     
+                    // the below three res statements can also be replaced with a simple res.send()
+                        res.writeHead(200,{
+                            "Content-Type": "text/plain",
+                            "Access-Control-Allow-Origin": "*" // Allow access from other domains
+                        });
+                        res.write(result[0].password);
+                        res.end();     
 
                     //how to send json/object back to front end
-                        res.status(200).json(result[0])
+                        //res.status(200).json(result[0])
         
                 }
                 else
