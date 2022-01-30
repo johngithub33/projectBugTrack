@@ -39,7 +39,16 @@
         let inputText = document.querySelector('#userSearchInput');
         inputText.addEventListener('input', () => {
             console.log(inputText.value)
+
+            var url = "http://localhost:4000/livesearch/"+inputText.value;
+
+            var con = new XMLHttpRequest();
+            con.open('GET', url, true);
+            con.send();
+
         })
+
+
     </script>
     
 

@@ -50,6 +50,20 @@ app.post('/signup', function(req, res){
       
 });
 
+//live search bar
+//this API is hit from admin.html page every time 'input' even occurs in the input box
+//colon : in node means it's a param, get it in "params.id"
+app.get('/livesearch/:id', (req,res) => {
+    console.log("live search working! here's req: " + req.params.id);
+
+    if(req.params.id == 'james')
+        con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${req.params.id}')`, function (err,result){
+
+            console.log("MATCH!" + result[0].password);
+        })
+
+})
+
 
 
 
