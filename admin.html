@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="adminStyle.css">
 </head>
 <body>
 
@@ -27,6 +27,20 @@
     <h2> My Tickets </h2>
     <h2> User Profile </h2>
 
+    <br><br><br>
+
+    <h2>search for user:</h2>
+    <input type="text" id="userSearchInput">
+    <h1>user search info:</h1>
+
+    <script>
+
+        //get live input text as it's constantly changing
+        let inputText = document.querySelector('#userSearchInput');
+        inputText.addEventListener('input', () => {
+            console.log(inputText.value)
+        })
+    </script>
     
 
 </body>

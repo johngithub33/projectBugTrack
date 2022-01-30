@@ -1,0 +1,121 @@
+*{
+    /* reset default browser settings */
+    margin: 0;
+    padding: 0;
+
+    /* tells the browser to account for any border and padding in the values you
+    specify for an element's width and height. If you set an element's width to 
+    100 pixels, that 100 pixels will include any border or padding you added, and 
+    the content box will shrink to absorb that extra width. */
+    box-sizing: border-box;
+
+    /* global font unless overwridden */
+    font-family: 'Khula', sans-serif;
+    
+}
+
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #00ff2a);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+/* animate body backgrouns */
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+.outerLoginContainer{
+    width: 350px;
+    margin: 75px auto 0 auto;
+}
+
+/* top h1 */
+h1{
+    text-align: center;
+}
+
+/* FORM **********************************************************/
+
+.loginForm{
+    border: 1px solid gray;
+
+    width: 300px;
+    margin: auto;
+
+
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.inputComboHolder{
+
+    align-self: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    width: 240px;
+
+    margin: 10px 0 0 0;
+    
+
+}
+
+input{
+    width: 150px;
+}
+
+/* buttons */
+.buttonHolder{
+    align-self: center;
+
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between; */
+}
+
+.loginForm input[type="submit"]{
+
+    width: 120px;
+
+    margin: 10px 0 0 0;
+
+}
+
+.loginForm input[value="create user"]{
+
+        align-self: center;
+        margin: 10px 0;
+
+}
+
+
+
+/* CREATE USER */
+
+.createUser{
+    display: none;
+}
+
+input{
+    height: 25px;
+    border-radius: 5px;
+}
+
+
+
+
