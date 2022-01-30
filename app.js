@@ -75,7 +75,17 @@ app.get('/livesearch/:id', (req,res) => {
 
     con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${req.params.id}')`, function (err,result){
 
-            if(result != '') console.log("MATCH!" + result[0].password);
+            if(result != '') {
+                console.log("MATCH! password is: " + result[0].password);
+
+                res.writeHead(200,{
+                    "Content-Type": "text/plain",
+                    "Access-Control-Allow-Origin": "*" // Allow access from other domains
+                });
+                res.write('Hello From Server   O w O !');
+                res.end();     
+                      
+            }
             else console.log('no match')
         })
 

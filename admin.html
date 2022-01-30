@@ -33,7 +33,7 @@
     <input type="text" id="userSearchInput">
     <button id="searchSubmit">Search</button>
 
-    <h1>user search info:</h1>
+    <h1 class='newAttachPoint'>user search info:</h1>
 
     <script>
 
@@ -43,13 +43,27 @@
         //button drive search, not live text as it's being typed
         let submitBtn = document.querySelector('#searchSubmit')
         submitBtn.addEventListener('click', () => {
+            
             console.log('clicked')
 
             var url = "http://localhost:4000/livesearch/"+inputText.value;
 
             var con = new XMLHttpRequest();
+            
+            con.onreadystatechange = function() {
+            if (con.readyState == XMLHttpRequest.DONE) {
+                alert(con.responseText);
+            }
+}
+
             con.open('GET', url, true);
             con.send();
+
+            const item = document.createElement("h1");
+            // const textNode = document.createTextNode(result[0].username+result[0].password)
+            const textNode = document.createTextNode("value here")
+            item.appendChild(textNode);
+            document.querySelector('.newAttachPoint').appendChild(item);
 
         })
 
