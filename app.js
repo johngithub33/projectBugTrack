@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 //serve static files, automatically serve index.html
 app.use(express.static(__dirname))
 
-// mysql
+//mysql
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -21,7 +21,7 @@ var con = mysql.createConnection({
   
   con.connect(function(err) { if (err) throw err;} )
 
-
+//URL hit from POST form
 app.post('/signup', function(req, res){
 
     let username = req.body.username;
@@ -60,19 +60,13 @@ app.post('/signup', function(req, res){
                 }
             }
         });
-
-    
-
-    
-      
 });
 
-//live search bar
+//API for live search bar
 //this API is hit from admin.html page every time 'input' even occurs in the input box
 //colon : in node means it's a param, get it in "params.id"
 app.get('/livesearch/:id', (req,res) => {
     
-    // if(req.params.id){
         console.log("live search working! here's req: " + req.params.id);
 
         con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${req.params.id}')`, function (err,result){
@@ -80,13 +74,18 @@ app.get('/livesearch/:id', (req,res) => {
                 if(result != '') {
                     console.log("MATCH! password is: " + result[0].password);
 
-                    //the below three res statements can also be replaced with a simple res.send()
-                    res.writeHead(200,{
-                        "Content-Type": "text/plain",
-                        "Access-Control-Allow-Origin": "*" // Allow access from other domains
-                    });
-                    res.write(result[0].password);
-                    res.end();     
+                    //send text only back to front end
+                        //the below three res statements can also be replaced with a simple res.send()
+                        // res.writeHead(200,{
+                        //     "Content-Type": "text/plain",
+                        //     "Access-Control-Allow-Origin": "*" // Allow access from other domains
+                        // });
+                        // // res.write(result[0].password);
+                        // res.write(result[0]);
+                        // res.end();     
+
+                    //how to send json/object back to front end
+                        res.status(200).json(result[0])
         
                 }
                 else
@@ -101,8 +100,10 @@ app.get('/livesearch/:id', (req,res) => {
                     res.end(); 
                 }
             })
-        // }
 
 })
+
+
+
 
 app.listen(4000);

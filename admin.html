@@ -93,8 +93,10 @@
                         //no_match is sent from the backend to say there's no match yet
                         //if there is a match, ohowever, update the webpage with the result from the backend
                         if(con.responseText != "no_match"){
-                            updatePage(con.responseText)
+                            // updatePage(con.responseText)
                         }
+
+                        console.log('response text is' + con.responseText)
 
                     }
                 }
