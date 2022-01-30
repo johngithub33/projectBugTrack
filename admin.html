@@ -44,6 +44,9 @@
         let submitBtn = document.querySelector('#searchSubmit')
 
         submitBtn.addEventListener('click', () => {
+
+            // var responseFromBackend = 'not returned';
+            // var count = 0;
             
             var url = "http://localhost:4000/livesearch/"+inputText.value;
 
@@ -51,36 +54,63 @@
 
             con.onreadystatechange = function() {
                 if (con.readyState == XMLHttpRequest.DONE) {
-                    console.log(con.responseText);
-                   
-                    var responseFromBackend = con.responseText;
-                    var item = document.createElement("h1");
-                    var textNode = document.createTextNode(responseFromBackend)
-                    item.appendChild(textNode);
-                    document.querySelector('.newAttachPoint').appendChild(item);
-                    textNode = document.createTextNode(responseFromBackend);
-                    alert(con.responseText);
+                    updatePage(con.responseText)
                 }
             }
 
             con.open('GET', url, true);
             con.send();
 
-            
+            function updatePage(responseFromBackend)
+            {
+                // var responseFromBackend = con.responseText;
+                var item = document.createElement("h1");
+                var textNode = document.createTextNode(responseFromBackend);
+                item.appendChild(textNode);
+                document.querySelector('.newAttachPoint').appendChild(item);
+                textNode = document.createTextNode(responseFromBackend);
+            }
 
         })
 
         //get live input text as it's constantly changing
         inputText.addEventListener('input', () => {
-            console.log(inputText.value)
 
-            // //hit API with value of inputText.value, node.js then uses :id for that value
-            // var url = "http://localhost:4000/livesearch/"+inputText.value;
+            console.log("value is" + inputText.value)
 
-            // var con = new XMLHttpRequest();
-            // con.open('GET', url, true);
-            // con.send();
+            if(inputText.value != '')
+            {
 
+                var url = "http://localhost:4000/livesearch/"+inputText.value;
+
+                var con = new XMLHttpRequest();
+
+                con.onreadystatechange = function() {
+                    if (con.readyState == XMLHttpRequest.DONE) {
+                        
+                        //no_match is sent from the backend to say there's no match yet
+                        //if there is a match, ohowever, update the webpage with the result from the backend
+                        if(con.responseText != "no_match"){
+                            updatePage(con.responseText)
+                        }
+
+                    }
+                }
+
+                con.open('GET', url, true);
+                con.send();
+
+                function updatePage(responseFromBackend)
+                {
+                    // var responseFromBackend = con.responseText;
+                    var item = document.createElement("h1");
+                    var textNode = document.createTextNode(responseFromBackend);
+                    item.appendChild(textNode);
+                    document.querySelector('.newAttachPoint').appendChild(item);
+                    textNode = document.createTextNode(responseFromBackend);
+                }
+        
+            }
         })
 
 

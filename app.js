@@ -71,27 +71,37 @@ app.post('/signup', function(req, res){
 //this API is hit from admin.html page every time 'input' even occurs in the input box
 //colon : in node means it's a param, get it in "params.id"
 app.get('/livesearch/:id', (req,res) => {
-    console.log("live search working! here's req: " + req.params.id);
+    
+    // if(req.params.id){
+        console.log("live search working! here's req: " + req.params.id);
 
-    con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${req.params.id}')`, function (err,result){
+        con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${req.params.id}')`, function (err,result){
 
-            if(result != '') {
-                console.log("MATCH! password is: " + result[0].password);
+                if(result != '') {
+                    console.log("MATCH! password is: " + result[0].password);
 
-
-                //the below three res statements can also be replaced with a simple res.send()
-                res.writeHead(200,{
-                    "Content-Type": "text/plain",
-                    "Access-Control-Allow-Origin": "*" // Allow access from other domains
-                });
-                res.write(result[0].password);
-                res.end();     
-
-                
-                      
-            }
-            else console.log('no match')
-        })
+                    //the below three res statements can also be replaced with a simple res.send()
+                    res.writeHead(200,{
+                        "Content-Type": "text/plain",
+                        "Access-Control-Allow-Origin": "*" // Allow access from other domains
+                    });
+                    res.write(result[0].password);
+                    res.end();     
+        
+                }
+                else
+                {
+                    //use no_match in the write() to tell the front end to not display anything yet because
+                    //there's no match yet from the database
+                    res.writeHead(200,{
+                        "Content-Type": "text/plain",
+                        "Access-Control-Allow-Origin": "*" // Allow access from other domains
+                    });
+                    res.write('no_match');
+                    res.end(); 
+                }
+            })
+        // }
 
 })
 
