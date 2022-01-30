@@ -29,24 +29,44 @@ app.post('/signup', function(req, res){
 
     // con.query("SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = 'james')", function (err,result){
 
-        con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${username}')`, function (err,result){
+    
+    // con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${username}')`, 
+    con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${username}')`, 
+    function (err,result){
 
-            // need try-catch here if user not found
-            //https://riptutorial.com/node-js/example/25797/async-functions-with-try-catch-error-handling
+            //error in connection query
+            // if(err){
+            //     console.log('error')
+            //     con.release();
+            //     return;
+            // }
 
-            //if username and password are correct
-            if(username == result[0].username && password == result[0].password){
-                console.log('logged in!')
+            if(result == '') res.send(`error page tbd, username not there, result is: ${result}`)
+
+            //query returns '' for result if user not there
+            else if(result != ''){
+
+                //if username and password are correct
+                if(username == result[0].username && password == result[0].password)
+                {
+                    console.log('logged in!')
+                    
+                    //need to add root directory of __dirname to serve file on route here
+                    res.sendFile(__dirname + '/admin.html')
+                }
+
+                // for incorrect password
+                else 
+                {
+                    console.log(`Password incorrect for user: ${username}. Also result is ${result}`)
+                    res.send('error page tbd, password wrong')
+                }
             }
+        });
 
-            // for incorrect password
-            else {
-                console.log(`Password incorrect for user: ${username}.`)
-            }
-    });
+    
 
-    //need to add root directory of __dirname to serve file on route here
-    res.sendFile(__dirname + '/admin.html')
+    
       
 });
 
@@ -63,8 +83,5 @@ app.get('/livesearch/:id', (req,res) => {
         })
 
 })
-
-
-
 
 app.listen(4000);
