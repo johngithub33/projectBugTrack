@@ -26,7 +26,7 @@ body {
 
     margin: 5px auto;
            
-    background: rgb(211, 211, 211);
+    background: rgb(1, 236, 253);
     border-radius: 4px;
 
     display: flex;
@@ -60,7 +60,7 @@ div.topBarContainer > p{
 /* for form */
 .outerLoginContainer{
     width: 350px;
-    margin: 75px auto 0 auto;
+    margin: 175px auto 0 auto;
 }
 
 /* top h1 */
@@ -125,12 +125,16 @@ input:focus{
     border-radius: 5px;
     border-style: none;
 
-    
     margin: 10px auto;
-    background-color: rgb(102, 145, 238);
-    
-
+    background-color: rgb(48, 48, 48);
+    transition: background-color .3s;
 }
+
+.loginForm input[type="submit"]:hover{
+
+    background-color: rgb(82, 82, 82);
+
+
 
 .loginForm input[value="create user"]{
 
