@@ -31,13 +31,18 @@ app.post('/signup', function(req, res){
 
         con.query(`SELECT * FROM users WHERE EXISTS(SELECT * FROM USERS WHERE username = '${username}')`, function (err,result){
 
-            if(err) throw err;
+            // need try-catch here if user not found
+            //https://riptutorial.com/node-js/example/25797/async-functions-with-try-catch-error-handling
 
+            //if username and password are correct
             if(username == result[0].username && password == result[0].password){
                 console.log('logged in!')
             }
 
-            else (console.log(result))
+            // for incorrect password
+            else {
+                console.log(`Password incorrect for user: ${username}.`)
+            }
     });
 
     //need to add root directory of __dirname to serve file on route here
