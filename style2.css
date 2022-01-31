@@ -19,12 +19,21 @@
 body {
 }
 
+i{
+    margin: 15px;
+}
+
+img{
+    width: 40px;
+    margin-right: 45px;
+}
+
 .topBarContainer{
 
     height: 50px;
     width: 1200px;
 
-    margin: 5px auto;
+    margin: 15px auto;
            
     background: rgb(1, 236, 253);
     border-radius: 4px;
@@ -37,23 +46,31 @@ body {
 }
 
 .topBarContainer h3{
-    margin: 0 0 0 5px;
+    /* margin: 0 0 0 5px; */
+    /* position: relative; */
+    justify-self: center;
 }
 
 div.topBarContainer > p{
     color: rgb(9, 255, 0);
-    
-    
+        
     align-self: center;
     justify-self: flex-end;
 }
 
+/* ***************************************************** */
+
 .rightMenuTopContainer{
-    width: auto;
-    margin: 0 10px;
+    width: 85px;
+    margin: 0 10px 0 0;
 
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+}
+
+.rightMenuTopContainer p{
+    /* margin-left: 15px; */
 }
 
 
@@ -109,11 +126,6 @@ input:focus{
     outline: none;
 }
 
-/* buttons */
-.buttonHolder{
-
-}
-
 .loginForm input[type="submit"]{
 
     width: 150px;
@@ -128,6 +140,10 @@ input:focus{
     margin: 10px auto;
     background-color: rgb(48, 48, 48);
     transition: background-color .3s;
+}
+
+.loginForm label{
+    margin: 15px 0 0 0;
 }
 
 .loginForm input[type="submit"]:hover{
@@ -147,9 +163,31 @@ input:focus{
 
 
 /* CREATE USER */
-
 .createUser{
     display: none;
+}
+
+
+.guestLoginBox{
+    width: 300px;
+    margin: 20px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.guestLoginBox button{
+    width: 150px;
+    height: 25px;
+    border-style: none;
+    border-radius: 5px;
+
+    margin-top: 10px;
+}
+
+.guestLoginBox a{
+    margin: 10px;
+    font-size: 12px;
 }
 
 
