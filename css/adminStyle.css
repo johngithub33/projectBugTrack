@@ -106,9 +106,13 @@ input{
 
 
 /* CREATE USER */
-
 .createUser{
     display: none;
+}
+
+input{
+    height: 25px;
+    border-radius: 5px;
 }
 
 
