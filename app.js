@@ -3,6 +3,9 @@ var app = express();
 
 var mysql = require('mysql');
 
+//modules export objects {}, so need to acess an object's properties
+var con = require('./dbConnection').con;
+
 //to parse incoming html form requests, the "body" of the request
 //this places the parsed body on the req.body object
 var bodyParser = require('body-parser')
@@ -10,16 +13,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 //serve static files, automatically serve index.html
 app.use(express.static(__dirname))
-
-//mysql
-var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: 'bugTracker',
-  });
-  
-  con.connect(function(err) { if (err) throw err;} )
 
 //URL hit from POST form
 app.post('/signup', function(req, res){
@@ -101,8 +94,5 @@ app.get('/livesearch/:id', (req,res) => {
             })
 
 })
-
-
-
 
 app.listen(4000);
