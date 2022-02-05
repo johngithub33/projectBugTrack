@@ -14,6 +14,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 //serve static files, automatically serve index.html
 app.use(express.static(__dirname))
 
+
+app.post('/userlogin', (req,res) => {
+    res.sendFile(__dirname + '/dashboard.html')
+
+})
+
+
 //URL hit from POST form
 app.post('/signup', function(req, res){
 
