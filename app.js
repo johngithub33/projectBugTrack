@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 
 var mysql = require('mysql');
+var nodemailer = require('nodemailer')
 
 //modules export objects {}, so need to acess an object's properties
 var con = require('./dbConnection').con;
@@ -15,8 +16,52 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(__dirname))
 
 
-app.post('/userlogin', (req,res) => {
+app.get('/userlogin', (req,res) => {
     res.sendFile(__dirname + '/dashboard.html')
+
+    //send an email
+    //https://stackabuse.com/how-to-send-emails-with-node-js/
+
+    let transport = nodemailer.createTransport({
+        host: 'smtp.mailtrap.io',
+        port: 2525,
+        auth: {
+           user: 'bf3bb20a6c6db9',
+           pass: '3b4b93f8b92752'
+        }
+    });
+
+    const message = {
+        from: 'bugtracker@trackkings.com', // Sender address
+        to: 'bugtracker0000@gmail.com',         // List of recipients
+        subject: 'You are subscribed to Bug Tracker!', // Subject line
+        //text: 'Thanks for signing up, you will not be notified of bug tracking status updates.' // Plain text body
+        html: '<h1> trial for html email </h1>',
+        attachments: [
+            { // Use a URL as an attachment
+              filename: 'your-testla.png',
+              path: 'https://media.gettyimages.com/photos/view-of-tesla-model-s-in-barcelona-spain-on-september-10-2018-picture-id1032050330?s=2048x2048'
+          }]
+    };
+    
+    transport.sendMail(message, function(err, info) {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log("email info: ", info);
+        }
+    });
+
+
+      //send a text
+      //https://api.textmagic.com/https-api/examples
+      //https://www.freecodecamp.org/news/use-nodemailer-to-send-emails-from-your-node-js-server/
+      //https://www.courier.com/blog/how-to-send-emails-with-node-js/
+    //   var TMClient = require('textmagic-rest-client');
+    //     var c = new TMClient('username', 'C7XDKZOQZo6HvhJwtUw0MBcslfqwtp4');
+    //     c.Messages.send({text: 'test message', phones:'9990001'}, function(err, res){
+    //         console.log('Messages.send()', err, res);
+    //     });
 
 })
 
