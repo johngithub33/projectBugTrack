@@ -2,7 +2,20 @@ var express = require('express');
 var app = express();
 
 var mysql = require('mysql');
-var nodemailer = require('nodemailer')
+var nodemailer = require('nodemailer');
+// var smtpserver = require('smtp-server');
+const SMTPServer = require("smtp-server").SMTPServer;
+const server = new SMTPServer();
+
+var AWS = require('aws-sdk');
+require('dotenv').config();
+
+const SESConfig = {
+    apiVersion: '2010-12-01',
+    accessKeyId: process.env.AWS_SES_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SES_SECRET_ACCESS_KEY,
+    region: process.env.AWS_SES_REGION
+}
 
 //modules export objects {}, so need to acess an object's properties
 var con = require('./dbConnection').con;
@@ -21,36 +34,75 @@ app.get('/userlogin', (req,res) => {
 
     //send an email
     //https://stackabuse.com/how-to-send-emails-with-node-js/
+    //use AWS for hosting Route 53 and SES and SNS for email and text
+    //https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/ses-examples-sending-email.html
+    //https://betterprogramming.pub/how-to-send-emails-with-node-js-using-amazon-ses-8ae38f6312e4
 
-    let transport = nodemailer.createTransport({
-        host: 'smtp.mailtrap.io',
-        port: 2525,
-        auth: {
-           user: 'bf3bb20a6c6db9',
-           pass: '3b4b93f8b92752'
-        }
-    });
 
-    const message = {
-        from: 'bugtracker@trackkings.com', // Sender address
-        to: 'bugtracker0000@gmail.com',         // List of recipients
-        subject: 'You are subscribed to Bug Tracker!', // Subject line
-        //text: 'Thanks for signing up, you will not be notified of bug tracking status updates.' // Plain text body
-        html: '<h1> trial for html email </h1>',
-        attachments: [
-            { // Use a URL as an attachment
-              filename: 'your-testla.png',
-              path: 'https://media.gettyimages.com/photos/view-of-tesla-model-s-in-barcelona-spain-on-september-10-2018-picture-id1032050330?s=2048x2048'
-          }]
-    };
+
+    // Create sendEmail params 
+    var params = {
+        Source: 'bugtracker0000@gmail.com',
+
+        Destination: { 
+            ToAddresses: [
+                'bugtracker0000@gmail.com'
+            ]
+        },
     
-    transport.sendMail(message, function(err, info) {
-        if (err) {
-          console.log(err)
-        } else {
-          console.log("email info: ", info);
+        Message: 
+        { 
+            Body: 
+            { 
+                Html: {
+                    Charset: "UTF-8",
+                    Data: "it worked yay!"
+                },
+                Text: {
+                    Charset: "UTF-8",
+                    Data: "TEXT_FORMAT_BODY"
+                }
+            },
+            Subject: {
+                Charset: 'UTF-8',
+                Data: 'Test email'
+            }
         }
+    };
+
+    new AWS.SES(SESConfig).sendEmail(params).promise().then((res) => {
+        console.log(res);
     });
+
+        // let transport = nodemailer.createTransport({
+        //     host: 'smtp.mailtrap.io',
+        //     port: 2525,
+        //     auth: {
+        //        user: 'bf3bb20a6c6db9',
+        //        pass: '3b4b93f8b92752'
+        //     }
+        // });
+
+        // const message = {
+        //     from: 'bugtracker@trackaasdasdfkings.com', // Sender address
+        //     to: 'bugtracasdfasdfker0000@gmaasdfil.com',         // List of recipients
+        //     subject: 'You are subscribed to Bug Tracker!', // Subject line
+        //     //text: 'Thanks for signing up, you will not be notified of bug tracking status updates.' // Plain text body
+        //     html: '<h1> trial for html email </h1>',
+        //     attachments: [
+        //         { // Use a URL as an attachment
+        //           filename: 'your-testla.png',
+        //           path: 'https://media.gettyimages.com/photos/view-of-tesla-model-s-in-barcelona-spain-on-september-10-2018-picture-id1032050330?s=2048x2048'
+        //       }]
+        // };
+
+        // transport.sendMail(message, function(err, info) {
+        //     if (err) {
+        //       console.log(err)
+        //     } else {
+        //       console.log("email info: ", info);
+        //     }
+        // });
 
 
       //send a text
