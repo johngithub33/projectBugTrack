@@ -1,3 +1,6 @@
+
+
+//config area **************************************************************************************
 var express = require('express');
 var app = express();
 
@@ -24,9 +27,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 //serve static files, automatically serve index.html
 app.use(express.static(__dirname))
 
+//END config area **************************************************************************************
+
+
 
 app.get('/userlogin', (req,res) => {
-    res.sendFile(__dirname + '/dashboard.html')
+    res.sendFile(__dirname + '/user.html')
 
     //send an email
     //https://stackabuse.com/how-to-send-emails-with-node-js/
@@ -117,6 +123,12 @@ app.post('/signup', function(req, res){
         });
 });
 
+
+
+
+
+
+//****************************************************************************************************/
 //API for live search bar
 //this API is hit from admin.html page every time 'input' even occurs in the input box
 //colon : in node means it's a param, get it in "params.id"

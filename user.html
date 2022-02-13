@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/userStyle.css">
+</head>
+<body>
+
+    <!-- could refresh entire page with left menu click: https://www.w3docs.com/learn-css/css-id-and-class.html -->
+    <div class='leftcolumn'>
+        <h6 id="dashboardbutton">Dashboard</h6>
+        <h6>Manage Roles</h6>
+        <h6>Manage Users</h6>
+        <h6>My Projects</h6>
+        <h6>My Tickets</h6>
+        <h6>User Profile</h6>
+    </div>
+
+
+    <div class='centercontent'>
+        <div class='centersection1'>
+                <h1> USER DASHBOARD </h1>
+
+                <br><br>
+                <h1> Add text or email notifications </h1>
+                <label> enter email </label>
+                <input type="text">
+                <label> enter phone number </label>
+                <input type="text">
+                
+                <h2> Submit New Bug </h2>
+                <form action="POST">
+                    <label> Bug Title:</label>
+                    <input type="text">
+
+                    <label> Description </label>
+                    <textarea name="textbox" id="textbox" cols="30" rows="10"></textarea>
+
+                    <!-- send email or text notificaiotn when fixed -->
+                    <div>
+                        <p>Please select notification method(s):</p>
+                        <input type="radio" name="email" value="HTML">
+                        <label for="email">email</label><br>
+                        <input type="radio" name="text" value="CSS">
+                        <label for="text">text</label><br>
+                    </div>
+
+                    <input type="submit">
+                </form>
+
+                <h2> Unsolved Bugs You've Submitted </h2>
+
+                    <ul style="list-style-type: square;"> 
+                        <li> first bug / submited date</li>
+                        <li> append more bugs with JS from DB/submitted date </li>
+                    </ul>
+
+
+
+                <h2> Search for Any Bug </h2>
+
+                    <h2>Search for Bug</h2>
+
+                    <label> Search by date:
+                        <input type="text"> 
+                    </label>
+
+                    <label> Search by bug title:
+                        <input type="text"> 
+                    </label>
+
+                    <label> Search by user submitted:
+                        <input type="text"> 
+                    </label>
+
+
+                    <h3>Search Results:</h3>
+                    <div class="searchDisplay"></div>
+        </div>
+
+        <div class='centersection2'>
+            <p>section two content</p>
+        </div>
+    </div>
+    
+
+    <script src='userscript.js'></script>
+</body>
+</html>

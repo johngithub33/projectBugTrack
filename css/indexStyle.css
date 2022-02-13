@@ -31,7 +31,7 @@ img{
 .topBarContainer{
 
     height: 50px;
-    width: 1200px;
+    width: 1000px;
 
     margin: 15px auto;
            
@@ -112,8 +112,6 @@ h1{
     width: 120px;
 
     margin: 10px 0 0 0;
-    
-
 }
 
 input{
@@ -163,14 +161,11 @@ input:focus{
 
 
 /* CREATE USER */
-.createUser{
-    display: none;
-}
-
 
 .guestLoginBox{
     width: 300px;
     margin: 20px auto 0 auto;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -188,8 +183,41 @@ input:focus{
 .guestLoginBox a{
     margin: 10px;
     font-size: 12px;
+} 
+
+.createusersection{
+    width: 200px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
+.newuserform{
+    
+    font-size: 12px;
+    width: 150px;
+    margin: 30px auto 0 auto;
 
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
+.newuserform input[type="submit"] {
+    width: 150px;
+    color: white;
+    height: 30px;
+    border-radius: 5px;
+    border-style: none;
+    margin: 10px auto;
+    background-color: rgb(48, 48, 48);
+    transition: background-color .3s;
+}
+
+.newuserform input[value="Discard New User Input"] {
+    margin: 0 auto;
+}

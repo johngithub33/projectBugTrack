@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/css/style2.css">
+    <link rel="stylesheet" href="/css/indexStyle.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,10 +20,9 @@
     <div class="topBarContainer">
 
         <!-- <img src="elephant.svg" alt="elephant" style="width: 40px; height: 40px;"> -->
-        <!-- kidaha-01 -->
-        <img src="./icons/monster-icons/SVG/kidaha-10.svg">
-        <!-- <i class="fas fa-user-secret fa-2x"></i> -->
-        <!-- <i class="fas fa-biohazard fa-2x"></i> -->
+        <!-- <img src="./icons/monster-icons/SVG/kidaha-10.svg"> -->
+        <i class="fas fa-user-secret fa-2x"></i>
+        
         <h3>bug tracker</h3>
 
         <div class="rightMenuTopContainer">
@@ -50,15 +49,30 @@
     </div>
 
     <div class="guestLoginBox">
-        <button id='guestuserbutton'> Login as Guest User </button>
+        <button id='guestuserbutton'> Login as Guest </button>
         <button id='createuserbutton'> Create New User </button>
     </div>
 
     <div class='createusersection' style='display: none'>
-        <p>create user stuff here</p>
+        
+        <form method="POST" action="/newuser" class='newuserform'>
+            <label> new username </label>
+            <input type="text" name="username">
+       
+            <label> new password </label>
+            <input type="password" name="password">
+
+            <label> confirm password </label>
+            <input type="password" name="password">
+               
+            <input type="submit" value="Create User">
+
+            <input type="submit" value="Discard New User Input">
+        </form>
+
     </div>
 
-    <script src="script.js"></script>
+    <script src="indexScript.js"></script>
     
 </body>
 </html>

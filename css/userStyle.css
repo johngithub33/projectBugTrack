@@ -15,6 +15,49 @@
 
 }
 
+.leftcolumn{
+    width: 175px;
+    height: 100%;
+    background-color: rgb(212, 0, 255);
+
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.leftcolumn h6{
+    height: 45px;
+    line-height: 45px;
+    width: 115px;
+    margin: 10px auto 0 auto;
+    border-radius: 4px;
+    background-color: rgb(236, 236, 236);
+
+    text-align: center;
+}
+
+.leftcolumn h6:hover{
+    background-color: rgb(211, 211, 211);
+}
+
+
+
+.centercontent{
+    position: absolute;
+    margin: 0 0 0 175px;
+}
+
+.centersection1{}
+
+.centersection2{
+    color: red;
+    font-size: 50px;
+}
+
+
+
+
+
 h1, h2{
     margin: 10px;
     text-align: center;
