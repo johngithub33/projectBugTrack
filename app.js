@@ -2,10 +2,6 @@ var express = require('express');
 var app = express();
 
 var mysql = require('mysql');
-var nodemailer = require('nodemailer');
-// var smtpserver = require('smtp-server');
-const SMTPServer = require("smtp-server").SMTPServer;
-const server = new SMTPServer();
 
 var AWS = require('aws-sdk');
 require('dotenv').config();
@@ -37,16 +33,15 @@ app.get('/userlogin', (req,res) => {
     //use AWS for hosting Route 53 and SES and SNS for email and text
     //https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/ses-examples-sending-email.html
     //https://betterprogramming.pub/how-to-send-emails-with-node-js-using-amazon-ses-8ae38f6312e4
-
-
-
+    //aws ses: https://medium.com/@maciej.lisowski.elk/nodejs-and-amazon-ses-how-to-send-emails-from-your-application-5c24b1f9b67b
     // Create sendEmail params 
     var params = {
         Source: 'bugtracker0000@gmail.com',
 
         Destination: { 
             ToAddresses: [
-                'bugtracker0000@gmail.com'
+                'bugtracker0000@gmail.com',
+                'testuserbugtracker0000@gmail.com'
             ]
         },
     
@@ -71,52 +66,15 @@ app.get('/userlogin', (req,res) => {
     };
 
     new AWS.SES(SESConfig).sendEmail(params).promise().then((res) => {
-        console.log(res);
+        console.log('here is res from sending aws ses email: ', res);
     });
-
-        // let transport = nodemailer.createTransport({
-        //     host: 'smtp.mailtrap.io',
-        //     port: 2525,
-        //     auth: {
-        //        user: 'bf3bb20a6c6db9',
-        //        pass: '3b4b93f8b92752'
-        //     }
-        // });
-
-        // const message = {
-        //     from: 'bugtracker@trackaasdasdfkings.com', // Sender address
-        //     to: 'bugtracasdfasdfker0000@gmaasdfil.com',         // List of recipients
-        //     subject: 'You are subscribed to Bug Tracker!', // Subject line
-        //     //text: 'Thanks for signing up, you will not be notified of bug tracking status updates.' // Plain text body
-        //     html: '<h1> trial for html email </h1>',
-        //     attachments: [
-        //         { // Use a URL as an attachment
-        //           filename: 'your-testla.png',
-        //           path: 'https://media.gettyimages.com/photos/view-of-tesla-model-s-in-barcelona-spain-on-september-10-2018-picture-id1032050330?s=2048x2048'
-        //       }]
-        // };
-
-        // transport.sendMail(message, function(err, info) {
-        //     if (err) {
-        //       console.log(err)
-        //     } else {
-        //       console.log("email info: ", info);
-        //     }
-        // });
-
-
-      //send a text
-      //https://api.textmagic.com/https-api/examples
-      //https://www.freecodecamp.org/news/use-nodemailer-to-send-emails-from-your-node-js-server/
-      //https://www.courier.com/blog/how-to-send-emails-with-node-js/
-    //   var TMClient = require('textmagic-rest-client');
-    //     var c = new TMClient('username', 'C7XDKZOQZo6HvhJwtUw0MBcslfqwtp4');
-    //     c.Messages.send({text: 'test message', phones:'9990001'}, function(err, res){
-    //         console.log('Messages.send()', err, res);
-    //     });
 
 })
 
+app.get('/guestuser', function(req, res){
+    res.send('guest user page')
+
+})
 
 //URL hit from POST form
 app.post('/signup', function(req, res){

@@ -1,24 +1,23 @@
 
+//guest user section
+var guestUserButton = document.querySelector('#guestuserbutton');
+
+guestUserButton.addEventListener('click', () => {
+    console.log('clicked it guest user button')
+    window.open('http://localhost:4000/guestuser', '_self')
+})
 
 
-
-// createUser class
-var createUserForm = document.querySelector('.createUser')
-
-
-var createUserButton = document.querySelector('.createUserButton');
-
-console.log('user buasdfasdftton',createUserForm);
+//new user section
+var createUserButton = document.querySelector('#createuserbutton');
 
 createUserButton.addEventListener('click', (event) => {
     
-    event.preventDefault();
+    var displayContent = document.querySelector('.createusersection')
 
-    let tempStyle = createUserForm.style;
-
-    tempStyle.display = "block";
-    tempStyle.width = "300px"
-    tempStyle.margin = "10px auto"
-    tempStyle.border = "2px solid gray"
+    displayContent.style.display = "block";
+    displayContent.style.width = "300px"
+    displayContent.style.margin = "10px auto"
+    displayContent.style.border = "2px solid gray"
 
 })
