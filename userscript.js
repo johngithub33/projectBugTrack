@@ -29,3 +29,20 @@ section2button.addEventListener('click', () => {
 
 
 //insert row method here for HTML tables....
+// .griddata
+
+const getgrid = document.querySelector('.griddata')
+
+const para = document.createElement("p");
+const node = document.createTextNode("345");
+para.appendChild(node);
+getgrid.appendChild(para);
+// getgrid.appendChild(para.appendChild(node));
+
+const getgrid2 = document.querySelector('.griddata')
+const para2 = document.createElement("p");
+const node2 = document.createTextNode("ricky");
+para2.appendChild(node2);
+getgrid2.appendChild(para2);
+
+

@@ -55,30 +55,32 @@ html, body {
 .centersection1{}
 
 .centersection2{
-    color: red;
-    font-size: 50px;
+    
+    font-size: 12px;
 }
 
-table{
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 14px;
+
+/* https://medium.com/evodeck/responsive-data-tables-with-css-grid-3c58ecf04723 */
+.griddata{
+    width: 800px;
+
+    display: grid;
+
+    /* 1fr means one "fraction" of the available space */
+    /* grid-template-columns: repeat(5, 1fr); */
+    grid-template-columns: 1fr 3fr 4fr 1fr 1fr;
+
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    
 }
 
-td, th{
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 15px 45px;
+/* Selects all <p> elements where the parent is a .griddata element */
+.griddata > p {
+    padding: 8px 4px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
 }
-
-thead{
-    background-color: green;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-
 /* table {
     display: grid;
     border-collapse: collapse;
