@@ -31,18 +31,35 @@ section2button.addEventListener('click', () => {
 //insert row method here for HTML tables....
 // .griddata
 
-const getgrid = document.querySelector('.griddata')
+addRowtoGrid();
+addRowtoGrid();
+addRowtoGrid();
 
-const para = document.createElement("p");
-const node = document.createTextNode("345");
-para.appendChild(node);
-getgrid.appendChild(para);
-// getgrid.appendChild(para.appendChild(node));
+function addRowtoGrid(){
+    const getgrid = document.querySelector('.griddata')
 
-const getgrid2 = document.querySelector('.griddata')
-const para2 = document.createElement("p");
-const node2 = document.createTextNode("ricky");
-para2.appendChild(node2);
-getgrid2.appendChild(para2);
+        const para = document.createElement("p");
+        const node = document.createTextNode("345");
+        para.appendChild(node);
+
+        const para2 = document.createElement("p");
+        const node2 = document.createTextNode("ricky");
+        para2.appendChild(node2);
+
+        const para3 = document.createElement("p");
+        const node3 = document.createTextNode("UAE");
+        para3.appendChild(node3);
+
+        const para4 = document.createElement("p");
+        const node4 = document.createTextNode("notes!");
+        para4.appendChild(node4);
+
+        const para5 = document.createElement("p");
+        const node5 = document.createTextNode("mom@mom.com");
+        para5.appendChild(node5);
+
+    getgrid.append(para, para2, para3, para4, para5);
+}
+
 
 
