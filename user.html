@@ -13,17 +13,39 @@
     <!-- could refresh entire page with left menu click: https://www.w3docs.com/learn-css/css-id-and-class.html -->
     <div class='leftcolumn'>
         <h6 id="dashboardbutton">Dashboard</h6>
-        <h6>Manage Roles</h6>
+        <h6 id="managerolesbutton">Manage Roles</h6>
         <h6>Manage Users</h6>
         <h6>My Projects</h6>
         <h6>My Tickets</h6>
         <h6>User Profile</h6>
+        <h6 id="blankbutton">Make Blank</h6>
     </div>
 
 
     <div class='centercontent'>
         <div class='centersection1'>
-                <h1> USER DASHBOARD </h1>
+                
+                <h1>Current Bug Tickets</h1>
+                
+                <!-- https://adamlynch.com/flexible-data-tables-with-css-grid/#just-get-to-css-grid-already -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>first name</th>
+                                <th>last name</th>
+                                <th>email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>123</td>
+                                <td>james</td>
+                                <td>cascostuff</td>
+                                <td>james@james.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
                 <br><br>
                 <h1> Add text or email notifications </h1>
@@ -83,7 +105,36 @@
         </div>
 
         <div class='centersection2'>
-            <p>section two content</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>first name</th>
+                        <th>last name</th>
+                        <th>email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>123</td>
+                        <td>james</td>
+                        <td>cascostuff</td>
+                        <td>james@james.com</td>
+                    </tr>
+                    <tr>
+                        <td>234</td>
+                        <td>rick</td>
+                        <td>cascostuff</td>
+                        <td>james@james.com</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                        <td>james</td>
+                        <td>cascostuff</td>
+                        <td>james@james.com</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     
