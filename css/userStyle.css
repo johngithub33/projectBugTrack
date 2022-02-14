@@ -62,7 +62,8 @@ html, body {
 
 /* https://medium.com/evodeck/responsive-data-tables-with-css-grid-3c58ecf04723 */
 .griddata{
-    width: 800px;
+    width: 500px;
+    margin: 15px 0 0 15px;
 
     display: grid;
 
@@ -75,62 +76,22 @@ html, body {
     
 }
 
+.griddata p:nth-child(-n+5){
+    font-weight: 900;
+    background-color: rgb(150, 150, 150);
+}
+
 /* Selects all <p> elements where the parent is a .griddata element */
 .griddata > p {
     padding: 8px 4px;
     border-left: 1px solid black;
     border-bottom: 1px solid black;
 }
-/* table {
-    display: grid;
-    border-collapse: collapse;
-    min-width: 100%;
-    grid-template-columns: 
-      minmax(75px, 1fr)
-      minmax(250px, 1.67fr)
-      minmax(250px, 1.67fr)
-      minmax(250px, 1.87fr);
-    
+
+.griddata > p:hover{
+    background-color: rgb(0, 255, 0);
 }
 
-
-thead,
-tbody,
-tr {
-display: contents;
-}
-
-th,
-td {
-  padding: 15px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-th {
-    position: sticky;
-    top: 0;
-    background: #76e06c;
-    text-align: left;
-    font-weight: normal;
-    font-size: 1.1rem;
-    color: white;
-  }
-
-  th:last-child {
-    border: 0;
-  }
-  
-  td {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: #808080;
-  }
-  
-  tr:nth-child(even) td {
-    background: #f8f6ff;
-  } */
 
 
 

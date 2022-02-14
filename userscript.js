@@ -31,10 +31,6 @@ section2button.addEventListener('click', () => {
 //insert row method here for HTML tables....
 // .griddata
 
-addRowtoGrid();
-addRowtoGrid();
-addRowtoGrid();
-
 function addRowtoGrid(){
     const getgrid = document.querySelector('.griddata')
 
@@ -60,6 +56,28 @@ function addRowtoGrid(){
 
     getgrid.append(para, para2, para3, para4, para5);
 }
+
+function removeRowFromGrid(){
+
+    const getgrid = document.querySelector('.griddata')
+    
+    //delete the 11th child 5 times, this deletes a row
+    for(let i = 0; i<5; i++)
+    {
+        getgrid.removeChild(getgrid.childNodes[11]);
+    }
+    
+}
+
+addRowtoGrid();
+addRowtoGrid();
+addRowtoGrid();
+addRowtoGrid();
+
+removeRowFromGrid();
+removeRowFromGrid();
+
+
 
 
 
