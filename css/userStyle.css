@@ -69,14 +69,14 @@ html, body {
 
     /* 1fr means one "fraction" of the available space */
     /* grid-template-columns: repeat(5, 1fr); */
-    grid-template-columns: 1fr 3fr 4fr 1fr 1fr;
+    grid-template-columns: 1fr 3fr 4fr 1fr 1fr 1fr;
 
     border-top: 1px solid black;
     border-right: 1px solid black;
     
 }
 
-.griddata p:nth-child(-n+5){
+.griddata p:nth-child(-n+6){
     font-weight: 900;
     background-color: rgb(150, 150, 150);
 }
@@ -84,7 +84,7 @@ html, body {
 /* Selects all <p> elements where the parent is a .griddata element */
 .griddata > p {
     padding: 8px 4px;
-    border-left: 1px solid black;
+    border-left: 1px solid rgb(0, 0, 0);
     border-bottom: 1px solid black;
 }
 
@@ -92,6 +92,29 @@ html, body {
     background-color: rgb(0, 255, 0);
 }
 
+.griddata > div{
+
+    padding: 8px 4px;
+    border-left: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid black;
+    /* transform: scale(.3); */ 
+   
+}
+
+.griddata > input:checked{
+    border-color: black;
+}
+
+.centersection2 button{
+    width: 75px;
+    height: 25px;
+    background-color: rgb(0, 255, 0);
+
+    border-radius: 4px;
+    border-style: none;
+
+    margin: 25px 25px 25px 425px;
+}
 
 
 

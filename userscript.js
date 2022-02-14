@@ -54,7 +54,14 @@ function addRowtoGrid(){
         const node5 = document.createTextNode("mom@mom.com");
         para5.appendChild(node5);
 
-    getgrid.append(para, para2, para3, para4, para5);
+        const makediv = document.createElement('div');
+        makediv.style.textAlign = 'center';
+        
+        const para6 = document.createElement("input");
+        para6.setAttribute('type', 'checkbox')
+        makediv.appendChild(para6);
+
+    getgrid.append(para, para2, para3, para4, para5, makediv);
 }
 
 function removeRowFromGrid(){
@@ -74,8 +81,8 @@ addRowtoGrid();
 addRowtoGrid();
 addRowtoGrid();
 
-removeRowFromGrid();
-removeRowFromGrid();
+// removeRowFromGrid();
+// removeRowFromGrid();
 
 
 
