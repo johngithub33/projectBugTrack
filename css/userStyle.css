@@ -63,7 +63,7 @@ html, body {
 /* https://medium.com/evodeck/responsive-data-tables-with-css-grid-3c58ecf04723 */
 .griddata{
     width: 500px;
-    margin: 15px 0 0 15px;
+    margin: 45px 0 0 45px;
 
     display: grid;
 
@@ -88,22 +88,86 @@ html, body {
     border-bottom: 1px solid black;
 }
 
+/* all squares in the table */
 .griddata > p:hover{
     background-color: rgb(0, 255, 0);
 }
 
-.griddata > div{
 
-    padding: 8px 4px;
-    border-left: 1px solid rgb(0, 0, 0);
+/* the checkbox column of divs */
+.griddata > .container{
+    /* padding: 8px 4px;
+    border-left: 1px solid rgb(28, 240, 116);
     border-bottom: 1px solid black;
+    position: relative; */
     /* transform: scale(.3); */ 
-   
+
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 32px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-.griddata > input:checked{
-    border-color: black;
+.griddata > .container input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
 }
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: green;
+  }
+
+  /* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: red;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: orange;
+  }
+  
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+
+
 
 .centersection2 button{
     width: 75px;
@@ -115,9 +179,6 @@ html, body {
 
     margin: 25px 25px 25px 425px;
 }
-
-
-
 
 h1, h2{
     margin: 10px;

@@ -34,6 +34,7 @@ section2button.addEventListener('click', () => {
 function addRowtoGrid(){
     const getgrid = document.querySelector('.griddata')
 
+        //the below will be pulled from database in the future
         const para = document.createElement("p");
         const node = document.createTextNode("345");
         para.appendChild(node);
@@ -54,14 +55,25 @@ function addRowtoGrid(){
         const node5 = document.createTextNode("mom@mom.com");
         para5.appendChild(node5);
 
-        const makediv = document.createElement('div');
-        makediv.style.textAlign = 'center';
+        //checkbox section
+        const checkboxDiv = document.createElement('label');
+        checkboxDiv.setAttribute('class', 'container')
+        checkboxDiv.style.textAlign = 'center';
         
-        const para6 = document.createElement("input");
-        para6.setAttribute('type', 'checkbox')
-        makediv.appendChild(para6);
+            const para6 = document.createElement("input");
+            para6.setAttribute('type', 'checkbox')
+                        
+            const spanCheck = document.createElement('span')
+            spanCheck.setAttribute('class', 'checkmark')
 
-    getgrid.append(para, para2, para3, para4, para5, makediv);
+            checkboxDiv.appendChild(para6);
+            checkboxDiv.appendChild(spanCheck);
+
+
+        //end checkbox section
+
+
+    getgrid.append(para, para2, para3, para4, para5, checkboxDiv);
 }
 
 function removeRowFromGrid(){
