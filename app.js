@@ -29,7 +29,9 @@ app.use(express.static(__dirname))
 
 //END config area **************************************************************************************
 
-
+app.get('/trialinternallink', (req,res) => {
+    res.sendFile(__dirname + "/trialinternallink.html")
+})
 
 app.get('/userlogin', (req,res) => {
     res.sendFile(__dirname + '/user.html')

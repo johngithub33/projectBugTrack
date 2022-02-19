@@ -94,79 +94,87 @@ html, body {
 }
 
 
-/* the checkbox column of divs */
-.griddata > .container{
-    /* padding: 8px 4px;
-    border-left: 1px solid rgb(28, 240, 116);
-    border-bottom: 1px solid black;
-    position: relative; */
-    /* transform: scale(.3); */ 
+/* structure is:
 
+    label class=container
+        input type=checkbox
+        span class=checkmark
+*/
+
+/* the checkbox column of each label */
+.griddata > .container{
+
+    /* background-color: orange; */
     display: block;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 32px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+
+    border-bottom: 1px solid rgb(0, 0, 0);
+    border-left: 1px solid black;
 }
 
+/* below here is to make custom checkboxes by using a span */
+
+/* each checkbox
 .griddata > .container input{
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
-}
+} */
 
+ /* each span 
 .checkmark {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
+    cursor: pointer;
+
+    height: 15px; 
+    width: 15px;
+    margin: 0 auto;
     background-color: green;
   }
 
-  /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+selects every .checkmark preceeded by input
+checkmark is span
+input:hover ~ .checkmark {
     background-color: red;
   }
 
-  /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+input:checked ~ .checkmark {
     background-color: orange;
-  }
+  } */
   
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
+/* span=checkmark */
+/* "after" the content */
+/* In CSS, ::after creates a pseudo-element that is the last child of the selected element. */
+/* <span> is very much like a <div> element, but <div> is a block-level element whereas a <span> is an inline element. */
+/* .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
 
-/* Show the checkmark when checked */
+selects every .checkmark:after preceeded by input:checked
 .container input:checked ~ .checkmark:after {
     display: block;
-  }
+}
   
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
-    left: 9px;
-    top: 5px;
+Style the checkmark/indicator
+.container .checkmark:after {
+    left: 1px;
+    top: 1px;
     width: 5px;
     height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
+
+    border of checkmark itself
+    border: solid rgb(255, 255, 255);
+    border-width: 0 5px 5px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
 
-
+end checkbox section */
 
 
 .centersection2 button{

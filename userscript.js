@@ -9,11 +9,13 @@ sect1.style.display = "none";
 var sect2 = document.querySelector('.centersection2');
 sect2.style.display = "none";
 
+//OR WHAT YOU CAN DO IS...make each page always have the fixed menu on the side, but make it a whole new page. so "dashbaord" button would then load the "dashboard.html"
+//page, "manage roles" would then load the "manageroles.html" page.
 
-//dashboardbutton
 var dashboardbutton = document.querySelector('#dashboardbutton')
 dashboardbutton.addEventListener('click', () => {
     sect1.style.display = "contents";
+    sect2.style.display = "none";
 })
 
 var blankbutton = document.querySelector('#blankbutton')
@@ -24,6 +26,7 @@ blankbutton.addEventListener('click', () => {
 var section2button = document.querySelector('#managerolesbutton')
 section2button.addEventListener('click', () => {
     sect2.style.display = "contents";
+    sect1.style.display = "none";
 })
 
 
