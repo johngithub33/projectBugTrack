@@ -24,20 +24,21 @@ html, body {
     display: grid;
 
     /* The grid-template-columns property defines the number of columns in your grid layout, and it can define the width of each column. */
-    grid-template-columns: 1fr 7.5fr;
+    grid-template-columns: 225px auto;
     grid-template-rows: auto;
+
+    /* position: relative; */
 
 }
 
 /* section: left column */
     .leftcolumn{
-        /* width: 225px; */
-        height: 100%; 
+        
         background-color: rgb(51, 51, 51);
-
-        /* position: fixed;
-        left: 0;
-        top: 0; */
+        
+        position: sticky;
+        top: 0;
+        height: 100vh; /* have to set height to make sticky work for a column, not sure why */
     }
 
     .leftcolumn h6{
@@ -51,11 +52,6 @@ html, body {
         text-align: center;
     }
 
-    .leftcolumn h6:hover{
-        background-color: rgb(211, 211, 211);
-    }
-
-
 /* section: center content  */
 
     .centercontent{
@@ -64,6 +60,8 @@ html, body {
             /* position: absolute;
             margin: 0 0 0 225px;
             */
+            
+            /* position: relative; */
     }
 
     .topbannercentersection{
@@ -72,16 +70,19 @@ html, body {
         flex-direction: row;
         align-items: center;
         gap: 10px;
-
+        
         background: gray;
         font-size: 25px;
         height: 50px;
         padding-left: 10px;
-        width: 100%;
+        
+        position: sticky;
+        top: 0;
 
     }
 
     .topbannercentersection .testflex{
+        
         display: flex;
         flex-direction: row;
         gap: 10px;
