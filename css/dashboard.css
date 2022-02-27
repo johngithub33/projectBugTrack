@@ -1,0 +1,206 @@
+
+*{
+    /* reset default browser settings */
+    margin: 0;
+    padding: 0;
+
+    /* tells the browser to account for any border and padding in the values you
+    specify for an element's width and height. If you set an element's width to 
+    100 pixels, that 100 pixels will include any border or padding you added, and 
+    the content box will shrink to absorb that extra width. */
+    box-sizing: border-box;
+
+    /* global font unless overwridden */
+    font-family: 'Khula', sans-serif;
+
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.outergridwrapper{
+    display: grid;
+
+    /* The grid-template-columns property defines the number of columns in your grid layout, and it can define the width of each column. */
+    grid-template-columns: 1fr 7.5fr;
+    grid-template-rows: auto;
+
+}
+
+/* section: left column */
+    .leftcolumn{
+        /* width: 225px; */
+        height: 100%; 
+        background-color: rgb(51, 51, 51);
+
+        /* position: fixed;
+        left: 0;
+        top: 0; */
+    }
+
+    .leftcolumn h6{
+        height: 45px;
+        line-height: 45px;
+        /* width: 115px; */
+        margin: 10px auto 0 auto;
+        border-radius: 4px;
+        background-color: rgb(236, 236, 236);
+
+        text-align: center;
+    }
+
+    .leftcolumn h6:hover{
+        background-color: rgb(211, 211, 211);
+    }
+
+
+/* section: center content  */
+
+    .centercontent{
+
+        /* needed if not using display: grid */
+            /* position: absolute;
+            margin: 0 0 0 225px;
+            */
+    }
+
+    .topbannercentersection{
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        background: gray;
+        font-size: 25px;
+        height: 50px;
+        padding-left: 10px;
+        width: 100%;
+
+    }
+
+    .topbannercentersection .testflex{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+
+        /* note: to make an item right  align, while the other flex items are left aligned, see this: https://www.smashingmagazine.com/2018/08/flexbox-alignment/  */
+        /* for margin-left:auto -> "A margin set to auto will try to become as big as it can in the direction it has been set in." */
+        /* there are two ways to accomplish this: position:absolute with right:0, or margin-left: auto; */
+        /* position: absolute;
+        right: 0; */
+
+        margin-left: auto;
+
+    }
+
+
+
+    /* li{ */
+        /* if you don't do this display, the li items will be outside of the .centercontent display and indent to the left */
+        /* display: block; */
+    /* } */
+
+    .centersection2{
+        
+        font-size: 12px;
+    }
+
+
+/* https://medium.com/evodeck/responsive-data-tables-with-css-grid-3c58ecf04723 */
+.griddata{
+    width: 500px;
+    margin: 45px 0 0 45px;
+
+    display: grid;
+
+    /* 1fr means one "fraction" of the available space */
+    /* grid-template-columns: repeat(5, 1fr); */
+    grid-template-columns: 1fr 3fr 4fr 1fr 1fr 1fr;
+
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    
+}
+
+.griddata p:nth-child(-n+6){
+    font-weight: 900;
+    background-color: rgb(150, 150, 150);
+}
+
+/* Selects all <p> elements where the parent is a .griddata element */
+.griddata > p {
+    padding: 8px 4px;
+    border-left: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid black;
+}
+
+/* all squares in the table */
+.griddata > p:hover{
+    background-color: rgb(0, 255, 0);
+}
+
+
+/* structure is:
+
+    label class=container
+        input type=checkbox
+        span class=checkmark
+*/
+
+/* the checkbox column of each label */
+.griddata > .container{
+
+    /* background-color: orange; */
+    display: block;
+    position: relative;
+
+    border-bottom: 1px solid rgb(0, 0, 0);
+    border-left: 1px solid black;
+}
+
+
+
+.centersection2 button{
+    width: 75px;
+    height: 25px;
+    background-color: rgb(0, 255, 0);
+
+    border-radius: 4px;
+    border-style: none;
+
+    margin: 25px 25px 25px 425px;
+}
+
+h1, h2{
+    margin: 10px;
+    text-align: center;
+}
+
+
+form{
+    width: 350px;
+    margin: auto;
+    border-radius: 4px;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 2px solid gray;
+}
+
+input[type="submit"]{
+    width: 60px;
+    display: block;
+    align-self: center;
+}
+
+
+.searchDisplay{
+    width: 700px;
+    height: 250px;
+    background: pink;
+}

@@ -17,7 +17,7 @@
             }
 
             //modules export objects {}, so need to acess an object's properties
-            var con = require('./dbConnection').con;
+            var con = require('./javascript/dbConnection').con;
 
             //to parse incoming html form requests, the "body" of the request
             //this places the parsed body on the req.body object
@@ -30,21 +30,22 @@
 //END config area **************************************************************************************
 
 
-
+//ROUTES
+app.get('/dashboard', (req,res) => {
+    console.log('in dash')
+    res.sendFile(__dirname + '/html/dashboard.html')
+})
 
 app.get('/manageusers', (req,res) => {
-    res.sendFile(__dirname + "/manageusers.html")
+    res.sendFile(__dirname + "/html/manageusers.html")
 })
 
 app.get('/myprojects', (req,res) => {
-    res.sendFile(__dirname + "/myprojects.html")
+    res.sendFile(__dirname + "/html/myprojects.html")
 })
 
-
-
-
 app.get('/userlogin', (req,res) => {
-    res.sendFile(__dirname + '/user.html')
+    res.sendFile(__dirname + '/html/user.html')
 
     //send an email
     //https://stackabuse.com/how-to-send-emails-with-node-js/
@@ -96,15 +97,13 @@ app.get('/guestuser', function(req, res){
 
 })
 
-app.get('/dashboard', (req,res) => {
-    res.sendFile(__dirname + '/dashboard.html')
-})
+
 
 //URL hit from POST form
 app.post('/dashboard', function(req, res){
 
     // res.sendFile(__dirname + '/admin.html')
-    res.sendFile(__dirname + '/dashboard.html')
+    res.sendFile(__dirname + '/html/dashboard.html')
 
     /*
     let username = req.body.username;
