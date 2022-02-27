@@ -1,37 +1,47 @@
 
 
 //config area **************************************************************************************
-var express = require('express');
-var app = express();
+            var express = require('express');
+            var app = express();
 
-var mysql = require('mysql');
+            var mysql = require('mysql');
 
-var AWS = require('aws-sdk');
-require('dotenv').config();
+            var AWS = require('aws-sdk');
+            require('dotenv').config();
 
-const SESConfig = {
-    apiVersion: '2010-12-01',
-    accessKeyId: process.env.AWS_SES_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SES_SECRET_ACCESS_KEY,
-    region: process.env.AWS_SES_REGION
-}
+            const SESConfig = {
+                apiVersion: '2010-12-01',
+                accessKeyId: process.env.AWS_SES_ACCESS_KEY_ID,
+                secretAccessKey: process.env.AWS_SES_SECRET_ACCESS_KEY,
+                region: process.env.AWS_SES_REGION
+            }
 
-//modules export objects {}, so need to acess an object's properties
-var con = require('./dbConnection').con;
+            //modules export objects {}, so need to acess an object's properties
+            var con = require('./dbConnection').con;
 
-//to parse incoming html form requests, the "body" of the request
-//this places the parsed body on the req.body object
-var bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: false }))
+            //to parse incoming html form requests, the "body" of the request
+            //this places the parsed body on the req.body object
+            var bodyParser = require('body-parser')
+            app.use(bodyParser.urlencoded({ extended: false }))
 
-//serve static files, automatically serve index.html
-app.use(express.static(__dirname))
+            //serve static files, automatically serve index.html
+            app.use(express.static(__dirname))
 
 //END config area **************************************************************************************
 
-app.get('/trialinternallink', (req,res) => {
-    res.sendFile(__dirname + "/trialinternallink.html")
+
+
+
+app.get('/manageusers', (req,res) => {
+    res.sendFile(__dirname + "/manageusers.html")
 })
+
+app.get('/myprojects', (req,res) => {
+    res.sendFile(__dirname + "/myprojects.html")
+})
+
+
+
 
 app.get('/userlogin', (req,res) => {
     res.sendFile(__dirname + '/user.html')
@@ -43,6 +53,7 @@ app.get('/userlogin', (req,res) => {
     //https://betterprogramming.pub/how-to-send-emails-with-node-js-using-amazon-ses-8ae38f6312e4
     //aws ses: https://medium.com/@maciej.lisowski.elk/nodejs-and-amazon-ses-how-to-send-emails-from-your-application-5c24b1f9b67b
     // Create sendEmail params 
+    /*
     var params = {
         Source: 'bugtracker0000@gmail.com',
 
@@ -76,6 +87,7 @@ app.get('/userlogin', (req,res) => {
     new AWS.SES(SESConfig).sendEmail(params).promise().then((res) => {
         console.log('here is res from sending aws ses email: ', res);
     });
+    */
 
 })
 
@@ -84,9 +96,17 @@ app.get('/guestuser', function(req, res){
 
 })
 
-//URL hit from POST form
-app.post('/signup', function(req, res){
+app.get('/dashboard', (req,res) => {
+    res.sendFile(__dirname + '/dashboard.html')
+})
 
+//URL hit from POST form
+app.post('/dashboard', function(req, res){
+
+    // res.sendFile(__dirname + '/admin.html')
+    res.sendFile(__dirname + '/dashboard.html')
+
+    /*
     let username = req.body.username;
     let password = req.body.password;
 
@@ -123,6 +143,7 @@ app.post('/signup', function(req, res){
                 }
             }
         });
+        */
 });
 
 

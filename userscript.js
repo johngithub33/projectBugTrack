@@ -31,6 +31,8 @@ section2button.addEventListener('click', () => {
 
 
 
+
+//for "Manage Roles" part of site
 //insert row method here for HTML tables....
 // .griddata
 

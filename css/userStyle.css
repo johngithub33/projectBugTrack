@@ -23,7 +23,7 @@ html, body {
 .leftcolumn{
     width: 175px;
     height: 100%;
-    background-color: rgb(212, 0, 255);
+    background-color: rgb(208, 255, 0);
 
     position: fixed;
     left: 0;
